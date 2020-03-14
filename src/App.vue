@@ -1,32 +1,81 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="menu">
+      <div id="brand">
+        <router-link to="/">
+          <img src="/images/PetsLogo.png" />
+        </router-link>
+      </div>
+      <div id="side">
+        <router-link to="/myPet">
+          <div class="menu-item my-pet">
+            <img src="/images/myPet.png" />
+          </div>
+        </router-link>
+        <router-link to="/play">
+          <div class="menu-item">
+            <img src="/images/Play.png" />
+          </div>
+        </router-link>
+      </div>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+* {
+  box-sizing: border-box;
 }
 
-#nav {
-  padding: 30px;
+body {
+  margin: 50px 100px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-template-areas: "none brand side";
+  margin-bottom: 50px;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#menu a,
+#menu a:visited {
+  color: #b84901;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#menu a:hover {
+  color: #f08e4d;
+}
+
+#brand {
+  grid-area: brand;
+  display: flex;
+  justify-content: center;
+}
+
+#brand img {
+  height: 200px;
+}
+
+#side {
+  grid-area: side;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#side img {
+  width: 100px;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.my-pet {
+  margin-right: 50px;
 }
 </style>
