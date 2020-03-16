@@ -9,6 +9,8 @@ import mock from './mock-data.js'
 
 let data = {
   toys: mock,
+  toyDesc: "",
+  toyImg: "",
   avatarChosen: false,
   avatarImg: "",
   avatarName: "",
