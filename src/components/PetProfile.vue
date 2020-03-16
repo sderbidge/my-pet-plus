@@ -58,8 +58,6 @@ export default {
   margin-right: 15px;
   width: 250px;
   height: auto;
-  border-width: 2px;
-  border-color: rgb(44, 44, 44);
 }
 #pet-name {
   text-align: center;
