@@ -82,11 +82,11 @@ body {
   margin-right: 50px;
 }
 footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   padding: 10px;
+  margin: 15px;
   background-color: #303030;
   color: white;
   text-align: center;
