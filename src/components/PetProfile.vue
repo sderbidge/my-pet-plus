@@ -8,6 +8,10 @@
         <img :src="'/images/animals/' + avatarImage" />
         <h2 id="pet-name">{{ name }}</h2>
       </div>
+      <div id="shop">
+        <button class="button1" @click="buyHunger()">$5 for 10 Hunger</button>
+        <button class="button2" @click="buyThirst()">$5 for 10 Thirst</button>
+      </div>
       <div id="stats">
         <h2 id="hunger">Hunger: {{hunger}}</h2>
         <h2 id="thirst">Thirst: {{thirst}}</h2>
@@ -28,13 +32,53 @@ export default {
       return this.$root.$data.avatarImg;
     },
     hunger() {
-      return this.$root.$data.hunger + " / " + this.$root.$data.maxHunger;
+      if (this.$root.$data.hunger < 10) {
+        return this.$root.$data.avatarName + " is starving!";
+      } else {
+        return this.$root.$data.hunger + " / " + this.$root.$data.maxHunger;
+      }
     },
     thirst() {
-      return this.$root.$data.thirst + " / " + this.$root.$data.maxThirst;
+      if (this.$root.$data.thirst < 10) {
+        return this.$root.$data.avatarName + " is super thirsty!!";
+      } else {
+        return this.$root.$data.thirst + " / " + this.$root.$data.maxThirst;
+      }
     },
     petCash() {
       return this.$root.$data.petCash;
+    }
+  },
+  methods: {
+    buyHunger() {
+      if (this.$root.$data.petCash >= 5) {
+        if (this.$root.$data.hunger == this.$root.$data.maxHunger) {
+          alert("Hunger is full");
+        } else if (this.$root.$data.hunger + 10 > this.$root.$data.maxHunger) {
+          this.$root.$data.hunger = this.$root.$data.maxHunger;
+          this.$root.$data.petCash -= 5;
+        } else {
+          this.$root.$data.hunger += 10;
+          this.$root.$data.petCash -= 5;
+        }
+      } else {
+        alert("Not enough Pet Cash");
+      }
+    },
+    buyThirst() {
+      if (this.$root.$data.petCash >= 5) {
+        if (this.$root.$data.thirst == this.$root.$data.maxThirst) {
+          alert("Thirst is quenched");
+        } else if (this.$root.$data.thirst + 10 > this.$root.$data.maxThirst) {
+          this.$root.$data.thirst = this.$root.$data.maxThirst;
+          this.$root.$data.petCash -= 5;
+        } else {
+          this.$root.$data.thirst += 10;
+          this.$root.$data.petCash -= 5;
+        }
+      } else {
+        alert("Not enough Pet Cash");
+      }
     }
   }
 };
@@ -69,6 +113,33 @@ export default {
 #profile img {
   width: 100%;
   height: auto;
+}
+#shop {
+  margin-bottom: 15px;
+}
+.button1 {
+  background-color: #eb9839;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+.button2 {
+  background-color: #008cba;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
 }
 #stats {
   padding: 10px 5px;

@@ -49,11 +49,39 @@ export default {
   },
   methods: {
     play(toy) {
-      alert(toy.desc);
-      this.$root.$data.toyDesc = toy.desc;
-      this.$root.$data.hunger -= toy.hungerLost;
-      this.$root.$data.thirst -= toy.thirstLost;
-      this.$root.$data.petCash += toy.reward;
+      if (
+        this.$root.$data.hunger - toy.hungerLost < 0 &&
+        this.$root.$data.thirst - toy.thirstLost < 0
+      ) {
+        this.$root.$data.toyDesc =
+          "Not enough energy for " +
+          toy.name +
+          ". Need " +
+          toy.hungerLost +
+          "hunger and " +
+          toy.thirstLost +
+          " thirst.";
+      } else if (this.$root.$data.hunger - toy.hungerLost < 0) {
+        this.$root.$data.toyDesc =
+          "Not enough energy for " +
+          toy.name +
+          ". Need " +
+          toy.hungerLost +
+          "hunger.";
+      } else if (this.$root.$data.thirst - toy.thirstLost < 0) {
+        this.$root.$data.toyDesc =
+          "Not enough energy for " +
+          toy.name +
+          ". Need " +
+          toy.thirstLost +
+          "thirst.";
+      } else {
+        this.$root.$data.hunger -= toy.hungerLost;
+        this.$root.$data.thirst -= toy.thirstLost;
+        this.$root.$data.petCash += toy.reward;
+        this.$root.$data.toyDesc = toy.desc;
+      }
+      alert(this.$root.$data.toyDesc);
     }
   }
 };

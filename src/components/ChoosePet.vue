@@ -80,7 +80,7 @@ export default {
 }
 
 .button {
-  background-color: #008cba; /* Green */
+  background-color: #008cba;
   border: none;
   color: white;
   padding: 10px;
