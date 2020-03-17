@@ -20,6 +20,9 @@
       </div>
     </div>
     <router-view />
+    <footer>
+      <a href="https://github.com/sderbidge/creative3">Github Repository</a>
+    </footer>
   </div>
 </template>
 
@@ -77,5 +80,21 @@ body {
 
 .my-pet {
   margin-right: 50px;
+}
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #303030;
+  color: white;
+  text-align: center;
+}
+
+footer a,
+footer a:visited {
+  color: #fff;
+  text-decoration: none;
 }
 </style>
